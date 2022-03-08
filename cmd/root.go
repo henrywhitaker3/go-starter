@@ -18,10 +18,11 @@ var (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "gostarter [directory]",
-	Short: "A CLI to setup a default env for a go project.",
-	Long:  `A CLI to setup a default env for a go project.`,
-	Args:  cobra.ExactArgs(1),
+	Use:     "gostarter [directory]",
+	Short:   "A CLI to setup a default env for a go project.",
+	Long:    `A CLI to setup a default env for a go project.`,
+	Version: "0.1.0",
+	Args:    cobra.ExactArgs(1),
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	RunE: func(cmd *cobra.Command, args []string) error {
