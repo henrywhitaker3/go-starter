@@ -5,9 +5,15 @@ Copyright © 2022 Henry Whitaker <henrywhitaker3@outlook.com>
 package cmd
 
 import (
+	"fmt"
 	"os"
 
+	"github.com/henrywhitaker3/go-starter/filesystem"
 	"github.com/spf13/cobra"
+)
+
+var (
+	Files []filesystem.File
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -15,9 +21,25 @@ var rootCmd = &cobra.Command{
 	Use:   "gostarter [directory]",
 	Short: "A CLI to setup a default env for a go project.",
 	Long:  `A CLI to setup a default env for a go project.`,
+	Args:  cobra.ExactArgs(1),
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	RunE: func(cmd *cobra.Command, args []string) error {
+		directoryArg := args[0]
+		dir, err := filesystem.NewDirectory(directoryArg)
+		if err != nil {
+			return err
+		}
+
+		for _, file := range Files {
+			if err := file.CopyTo(*dir); err != nil {
+				return err
+			}
+		}
+
+		fmt.Println(dir.Path)
+		fmt.Println("Now run `go mod init [package name]`")
+
 		return nil
 	},
 }
