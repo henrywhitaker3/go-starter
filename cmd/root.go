@@ -37,8 +37,7 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
-		fmt.Println(dir.Path)
-		fmt.Println("Now run `go mod init [package name]`")
+		fmt.Println("Open the new directory and run `go mod init [package name]`")
 
 		return nil
 	},
