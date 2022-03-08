@@ -21,7 +21,7 @@ var rootCmd = &cobra.Command{
 	Use:     "gostarter [directory]",
 	Short:   "A CLI to setup a default env for a go project.",
 	Long:    `A CLI to setup a default env for a go project.`,
-	Version: "0.1.2",
+	Version: "0.1.3",
 	Args:    cobra.ExactArgs(1),
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
